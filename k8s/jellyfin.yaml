@@ -56,6 +56,8 @@ spec:
       labels:
         app: jellyfin
     spec:
+      imagePullSecrets:
+      - name: ghcr-secret
       containers:
       - name: jellyfin
         image: ghcr.io/brosofts/jellyfin:my
