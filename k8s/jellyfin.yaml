@@ -1,0 +1,137 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: jellyfin
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: jellyfin-config-pvc
+  namespace: jellyfin
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 20Gi
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: jellyfin-cache-pvc
+  namespace: jellyfin
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 20Gi
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: jellyfin-media-pvc
+  namespace: jellyfin
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 100Gi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jellyfin
+  namespace: jellyfin
+  labels:
+    app: jellyfin
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jellyfin
+  template:
+    metadata:
+      labels:
+        app: jellyfin
+    spec:
+      containers:
+      - name: jellyfin
+        image: ghcr.io/brosofts/jellyfin:my
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8096
+          name: http
+        - containerPort: 8920
+          name: https
+        env:
+        # Jellyfin no requiere muchas variables por defecto, pero se pueden configurar
+        - name: TZ
+          value: "America/Bogota" # Ajustar a la zona horaria del VPS
+        volumeMounts:
+        - name: config-volume
+          mountPath: /config
+        - name: cache-volume
+          mountPath: /cache
+        - name: media-volume
+          mountPath: /media
+      volumes:
+      - name: config-volume
+        persistentVolumeClaim:
+          claimName: jellyfin-config-pvc
+      - name: cache-volume
+        persistentVolumeClaim:
+          claimName: jellyfin-cache-pvc
+      # NOTA: Si deseas utilizar una carpeta local del VPS para tus archivos multimedia (por ejemplo: /mnt/media),
+      # puedes comentar las líneas de persistentVolumeClaim y descomentar la sección de hostPath a continuación:
+      - name: media-volume
+        persistentVolumeClaim:
+          claimName: jellyfin-media-pvc
+      # - name: media-volume
+      #   hostPath:
+      #     path: /mnt/media
+      #     type: DirectoryOrCreate
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: jellyfin-service
+  namespace: jellyfin
+spec:
+  selector:
+    app: jellyfin
+  ports:
+  - name: http
+    port: 80
+    targetPort: 8096
+    protocol: TCP
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: jellyfin-ingress
+  namespace: jellyfin
+  annotations:
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/proxy-body-size: "100m"
+    # Soporte para WebSockets requerido por Jellyfin
+    nginx.ingress.kubernetes.io/websocket-services: "jellyfin-service"
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: ste.brosofts.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: jellyfin-service
+            port:
+              number: 80
+  tls:
+  - hosts:
+    - ste.brosofts.com
+    secretName: jellyfin-tls-secret
