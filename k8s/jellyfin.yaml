@@ -39,6 +39,63 @@ spec:
     requests:
       storage: 100Gi
 ---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: jellyfin-playlist-cm
+  namespace: jellyfin
+data:
+  playlist_from_log.m3u: |
+    #EXTM3U
+    #EXTINF:-1 tvg-id="cyx_93531158996778016" tvg-logo="https://sekrdq.x81niayvk.xyz/public/images/383b7355-3803-4340-b9aa-8a471283ff16.png" tvg-chno="7",ECDF
+    https://stream-server.domain/live/cyx_93531158996778016.ts?app_id=com.android.msandroid&tag=free&scheme=md5-01&media_code=cyx_93531158996778016&expired=1785113170&token=B31FBBCFE1FE5835D40521F8759D07FE
+    #EXTINF:-1 tvg-id="cyx_8305D098072D9C0370F79944" tvg-logo="https://sekrdq.x81niayvk.xyz/public/images/7ff32158-47bb-452e-8a93-ab72ea9e2f0a.png" tvg-chno="8",ECDF FHD
+    https://stream-server.domain/live/cyx_8305D098072D9C0370F79944.ts?app_id=com.android.msandroid&tag=free&scheme=md5-01&media_code=cyx_8305D098072D9C0370F79944&expired=1785113170&token=7D3E55B14CBDBDE64FE22AE3F68F722C
+    #EXTINF:-1 tvg-id="cyx_7E95BA6378098331FD8BA_720p" tvg-logo="https://sekrdq.x81niayvk.xyz/public/images/5b1a9ed2-38e9-4add-8e66-86f92c44d8aa.png" tvg-chno="9",NBA Eventos
+    https://stream-server.domain/live/cyx_7E95BA6378098331FD8BA_720p.ts?app_id=com.android.msandroid&tag=free&scheme=md5-01&media_code=cyx_7E95BA6378098331FD8BA_720p&expired=1785113170&token=81A54E626AFC83D70C187FFD87ACA939
+    #EXTINF:-1 tvg-id="cyx_A3S" tvg-logo="https://sekrdq.x81niayvk.xyz/public/images/3c2e28b4-13f8-4fa0-9b4d-d4557a544230.png" tvg-chno="11",A3S
+    https://stream-server.domain/live/cyx_A3S.ts?app_id=com.android.msandroid&tag=free&scheme=md5-01&media_code=cyx_dcuUmU3SZxmkSPfn5e67c&expired=1785113170&token=6666886EEC03611015E7F874E1C53FA0
+    #EXTINF:-1 tvg-id="cyx-A&EHD" tvg-logo="https://sekrdq.x81niayvk.xyz/public/images/75103cc9-d959-4f63-9c2e-1a3ccf9c1181.png" tvg-chno="12",A&E HD
+    https://stream-server.domain/live/cyx-A&EHD.ts?app_id=com.android.msandroid&tag=free&scheme=md5-01&media_code=cyx-7BCA096543B49d9fF5E93008926A&expired=1785113170&token=076413E599571E4FD1858B59B5D177F6
+    #EXTINF:-1 tvg-id="cyx_B9578256ADE68611A42" tvg-logo="https://sekrdq.x81niayvk.xyz/public/images/ccb6c145-3d01-48b5-bcca-7760e7d0f851.png" tvg-chno="13",A&E FHD
+    https://stream-server.domain/live/cyx_B9578256ADE68611A42.ts?app_id=com.android.msandroid&tag=free&scheme=md5-01&media_code=cyx_B9578256ADE68611A42&expired=1785113170&token=E08C82FA4CA8A69AB98DB84A101A3B91
+    #EXTINF:-1 tvg-id="cyx-AMC" tvg-logo="https://sekrdq.x81niayvk.xyz/public/images/72290059-19be-43c4-880b-2927aa082ec1.png" tvg-chno="14",AMC HD
+    https://stream-server.domain/live/cyx-AMC.ts?app_id=com.android.msandroid&tag=free&scheme=md5-01&media_code=cyx-D08E1E3D47688ed3A7F115FEB16A&expired=1785113170&token=9F8FD9DD6C13F9E4C88FAC0345197315
+    #EXTINF:-1 tvg-id="cyx_800375BBCB69FCF7E055CBDC" tvg-logo="https://sekrdq.x81niayvk.xyz/public/images/8fc936c7-67fa-4777-b6a2-e273cd0eea83.png" tvg-chno="15",AMC BO HD
+    https://stream-server.domain/live/cyx_800375BBCB69FCF7E055CBDC.ts?app_id=com.android.msandroid&tag=free&scheme=md5-01&media_code=cyx_800375BBCB69FCF7E055CBDC&expired=1785113170&token=32E8EBCF74C0F026220870B789DB85A4
+    #EXTINF:-1 tvg-id="cyx_DA442D95A726FA05D4437" tvg-logo="https://sekrdq.x81niayvk.xyz/public/images/eeb81510-13ae-42ee-a5cd-1686f586d0aa.png" tvg-chno="16",NetFlix Eventos
+    https://stream-server.domain/live/cyx_DA442D95A726FA05D4437.ts?app_id=com.android.msandroid&tag=free&scheme=md5-01&media_code=cyx_DA442D95A726FA05D4437&expired=1785113170&token=E469CF21CB7E6B5B76DD348B8CFAF4AE
+    #EXTINF:-1 tvg-id="cyx-AXN" tvg-logo="https://sekrdq.x81niayvk.xyz/public/images/877e6b13-8805-4729-927c-e353d33f2069.png" tvg-chno="21",AXN HD
+    https://stream-server.domain/live/cyx-AXN.ts?app_id=com.android.msandroid&tag=free&scheme=md5-01&media_code=cyx-45A8419F4A50afa2061838104FA8&expired=1785113170&token=4E3DC73E72FF04D808213E3427040E5A
+    #EXTINF:-1 tvg-id="cyx_AXNWhite☆" tvg-logo="https://sekrdq.x81niayvk.xyz/public/images/8b56f7f7-982b-4556-bc4a-d075bab3478e.png" tvg-chno="22",AXN WHITE HD
+    https://stream-server.domain/live/cyx_AXNWhite☆.ts?app_id=com.android.msandroid&tag=free&scheme=md5-01&media_code=cyx_vFnmeJP4T1Qv26jQsC1QzeI6&expired=1785113170&token=2FDAB6049872114A23069123647BBE2E
+    #EXTINF:-1 tvg-id="cyx_6800191725964765464647286" tvg-logo="https://sekrdq.x81niayvk.xyz/public/images/29890508-eb91-4791-933b-a6161fc16b92.png" tvg-chno="23",AXN ESPAÑA HD
+    https://stream-server.domain/live/cyx_6800191725964765464647286.ts?app_id=com.android.msandroid&tag=free&scheme=md5-01&media_code=cyx_6800191725964765464647286&expired=1785113170&token=048EF56CD6AC97B55223710C0AA6CB5E
+    #EXTINF:-1 tvg-id="cyx_0EA669A04973404263A" tvg-logo="https://sekrdq.x81niayvk.xyz/public/images/90205ab1-3148-495d-8dbc-5fa18b0523d3.png" tvg-chno="25",Adult Swim
+    https://stream-server.domain/live/cyx_0EA669A04973404263A.ts?app_id=com.android.msandroid&tag=free&scheme=md5-01&media_code=cyx_0EA669A04973404263A&expired=1785113170&token=EA0F482151FAAEC339AE7EB6B7F8E62C
+    #EXTINF:-1 tvg-id="cyx_Adn40☆" tvg-logo="https://sekrdq.x81niayvk.xyz/public/images/2c07231e-1b97-40ea-9227-b7d2d1f443df.png" tvg-chno="27",Adn40
+    https://stream-server.domain/live/cyx_Adn40☆.ts?app_id=com.android.msandroid&tag=free&scheme=md5-01&media_code=cyx_vPeWHohcPR6vDG&expired=1785113170&token=4AE8131D1C0BB9231829355B76C7EA86
+    #EXTINF:-1 tvg-id="cyx_2991439621291462262189" tvg-logo="https://sekrdq.x81niayvk.xyz/public/images/4cca399c-c314-49ae-89a9-c4f2f0e50bf0.png" tvg-chno="28",ADN MX HD
+    https://stream-server.domain/live/cyx_2991439621291462262189.ts?app_id=com.android.msandroid&tag=free&scheme=md5-01&media_code=cyx_2991439621291462262189&expired=1785113170&token=E28EEFE84BE4DAE2FA027A8106935752
+    #EXTINF:-1 tvg-id="cyx-ATV" tvg-logo="https://sekrdq.x81niayvk.xyz/public/images/0cdba5e5-c807-4d70-9e0f-8cfa5e64e9ae.png" tvg-chno="29",ATV
+    https://stream-server.domain/live/cyx-ATV.ts?app_id=com.android.msandroid&tag=free&scheme=md5-01&media_code=cyx-CD3F16694D5A8deeF08A5F8C0AE7&expired=1785113170&token=4A69E86F2EE2128696DA61AE972ADBF4
+    #EXTINF:-1 tvg-id="cyx_ATVPlusHD☆" tvg-logo="https://sekrdq.x81niayvk.xyz/public/images/4e74e737-5f58-4099-984c-9704040421c9.png" tvg-chno="30",ATV Plus HD
+    https://stream-server.domain/live/cyx_ATVPlusHD☆.ts?app_id=com.android.msandroid&tag=free&scheme=md5-01&media_code=cyx_Ho831Zoq14KraVDv&expired=1785113170&token=42F6E1FC7F616D4267C8635D1FA2B64A
+    #EXTINF:-1 tvg-id="cyx_0143518877477436159145513898" tvg-logo="https://sekrdq.x81niayvk.xyz/public/images/38c9c28b-42b5-4eac-8a71-6142c241c64a.png" tvg-chno="32",ALQUILER Cinema Horror
+    https://stream-server.domain/live/cyx_0143518877477436159145513898.ts?app_id=com.android.msandroid&tag=free&scheme=md5-01&media_code=cyx_0143518877477436159145513898&expired=1785113170&token=DB06FCF186227E803825354AAF49C8AD
+    #EXTINF:-1 tvg-id="cyx_8201827157307380367538014692" tvg-logo="https://sekrdq.x81niayvk.xyz/public/images/2465bce0-1355-4754-a7c4-d2e28c2ddfbb.png" tvg-chno="34",ALQUILER Cinema Accion
+    https://stream-server.domain/live/cyx_8201827157307380367538014692.ts?app_id=com.android.msandroid&tag=free&scheme=md5-01&media_code=cyx_8201827157307380367538014692&expired=1785113170&token=D299493A03DB7C6904E7D67BBDCCF185
+    #EXTINF:-1 tvg-id="cyx_2921694528640454676589519949" tvg-logo="https://sekrdq.x81niayvk.xyz/public/images/1b130393-5918-47fa-a794-ce6d4f3b1d29.png" tvg-chno="36",ALQUILER Cinema Dreamworks
+    https://stream-server.domain/live/cyx_2921694528640454676589519949.ts?app_id=com.android.msandroid&tag=free&scheme=md5-01&media_code=cyx_2921694528640454676589519949&expired=1785113170&token=E17977CACB04154FAF2BB78870A6EA13
+    #EXTINF:-1 tvg-id="cyx_3783650320514034312427461941" tvg-logo="https://sekrdq.x81niayvk.xyz/public/images/570364ce-4e7c-4e5c-a3ed-6ca7b61cdbe1.png" tvg-chno="37",ALQUILER Cinema Familia
+    https://stream-server.domain/live/cyx_3783650320514034312427461941.ts?app_id=com.android.msandroid&tag=free&scheme=md5-01&media_code=cyx_3783650320514034312427461941&expired=1785113170&token=49193C57FE06427925EE74A5F36BF0BC
+    #EXTINF:-1 tvg-id="cyx_3842350890182664333549468737" tvg-logo="https://sekrdq.x81niayvk.xyz/public/images/2987a997-c450-4e44-a5b5-6854c2fed7ab.png" tvg-chno="38",A&E US HD
+    https://stream-server.domain/live/cyx_3842350890182664333549468737.ts?app_id=com.android.msandroid&tag=free&scheme=md5-01&media_code=cyx_3842350890182664333549468737&expired=1785113170&token=F47350A476329952A1A1916524BBFF9A
+    #EXTINF:-1 tvg-id="cyx_26541376076545229683" tvg-logo="https://sekrdq.x81niayvk.xyz/public/images/f50471b4-401e-4243-b00a-9f28d62bb97e.png" tvg-chno="39",ANIMAL PLANET HD
+    https://stream-server.domain/live/cyx_26541376076545229683.ts?app_id=com.android.msandroid&tag=free&scheme=md5-01&media_code=cyx_26541376076545229683&expired=1785113170&token=E26048B3049874D4315D301CC27A77AA
+    #EXTINF:-1 tvg-id="cyx_BitMe☆" tvg-logo="https://sekrdq.x81niayvk.xyz/public/images/63370584-62f8-47c4-b737-3a4da2a4d022.png" tvg-chno="40",ANIMAL PLANET HD+
+    https://stream-server.domain/live/cyx_BitMe☆.ts
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -78,6 +135,9 @@ spec:
           mountPath: /cache
         - name: media-volume
           mountPath: /media
+        - name: playlist-volume
+          mountPath: /media/playlist_from_log.m3u
+          subPath: playlist_from_log.m3u
       volumes:
       - name: config-volume
         persistentVolumeClaim:
@@ -85,15 +145,12 @@ spec:
       - name: cache-volume
         persistentVolumeClaim:
           claimName: jellyfin-cache-pvc
-      # NOTA: Si deseas utilizar una carpeta local del VPS para tus archivos multimedia (por ejemplo: /mnt/media),
-      # puedes comentar las líneas de persistentVolumeClaim y descomentar la sección de hostPath a continuación:
       - name: media-volume
         persistentVolumeClaim:
           claimName: jellyfin-media-pvc
-      # - name: media-volume
-      #   hostPath:
-      #     path: /mnt/media
-      #     type: DirectoryOrCreate
+      - name: playlist-volume
+        configMap:
+          name: jellyfin-playlist-cm
 ---
 apiVersion: v1
 kind: Service
